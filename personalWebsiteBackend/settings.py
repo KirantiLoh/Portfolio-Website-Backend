@@ -14,6 +14,7 @@ from pathlib import Path
 import cloudinary
 import django_heroku
 from decouple import config 
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -154,6 +155,7 @@ CORS_ORIGIN_WHITELIST = (
   'https://maurice-yang.netlify.app',
 )
 
+ # Debugging in heroku live
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -187,4 +189,6 @@ LOGGING = {
     }
 }
 
+DEBUG_PROPAGATE_EXCEPTIONS = True
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 django_heroku.settings(locals(), logging=False)
