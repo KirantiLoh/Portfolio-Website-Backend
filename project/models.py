@@ -8,7 +8,7 @@ class Project(models.Model):
     desc = models.TextField()
     url = models.URLField()
     link_frontend = models.URLField(null=True, blank=True)
-    link_backtend = models.URLField(null=True, blank=True)
+    link_backend = models.URLField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
