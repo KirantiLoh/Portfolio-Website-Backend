@@ -6,7 +6,7 @@ from django.utils.text import slugify
 class Blog(models.Model):
     title = models.CharField(max_length=100)
     thumbnail = CloudinaryField('image')
-    content = models.TextField(max_length=5000)
+    content = models.TextField(max_length=1000)
     date_created = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(null=True, blank=True)
 
