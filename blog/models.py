@@ -8,7 +8,7 @@ class Blog(models.Model):
     thumbnail = CloudinaryField('image')
     content = models.TextField(max_length=3000)
     date_created = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(null=True, blank=True)
+    slug = models.SlugField(null=True, blank=True, max_length=300)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
