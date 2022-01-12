@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from blog.models import Blog
 from project.models import Project
 from project.serializers import ProjectSerializer
-from blog.serializers import BlogSerializer
+from blog.serializers import BlogSerializer, BlogSlugSerializer
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import status
 
@@ -31,9 +31,15 @@ def blogs_view(request):
     return Response(serializer.data)
     
 @api_view(['GET'])
+def getBlogSlugs(request):
+    blog = Blog.objects.all()
+    serializer = BlogSlugSerializer(blog, many = True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 def blog_view(request, slug):
     try: 
-        blog = Blog.objects.all()
+        blog = Blog.objects.get(slug = slug)
         serializer = BlogSerializer(blog, many = True)
         return Response(serializer.data)
     except ObjectDoesNotExist:
