@@ -40,7 +40,7 @@ def getBlogSlugs(request):
 def blog_view(request, slug):
     try: 
         blog = Blog.objects.get(slug = slug)
-        serializer = BlogSerializer(blog, many = True)
+        serializer = BlogSerializer(blog, many = False)
         return Response(serializer.data)
     except ObjectDoesNotExist:
         return Response({'message':"There's no blog with that name"}, status = status.HTTP_404_NOT_FOUND)
