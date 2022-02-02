@@ -11,6 +11,7 @@ class Project(models.Model):
     link_frontend = models.URLField(null=True, blank=True)
     link_backend = models.URLField(null=True, blank=True)
     date_created = models.DateTimeField(default=now)
+    show_project = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.title}"

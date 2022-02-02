@@ -20,7 +20,7 @@ def getRoutes(request):
 
 @api_view(['GET'])
 def projects_view(request):
-    projects = Project.objects.all()
+    projects = Project.objects.filter(show_projects = True)
     serializer = ProjectSerializer(projects, many = True)
     return Response(serializer.data)
 
